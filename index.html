@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shamar Pryce | Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  background: #0a0f1e;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #0a1cff, #000);
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(77,163,255,0.2) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+header h1 {
+  font-size: 3.5rem;
+  color: #4da3ff;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px #4da3ff;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #b5c9ff;
+  margin-top: 12px;
+  max-width: 600px;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+header .discord-btn {
+  margin-top: 25px;
+  background: linear-gradient(90deg, #5865F2, #4752c4);
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+header .discord-btn:hover {
+  transform: scale(1.08);
+  background: linear-gradient(90deg, #4752c4, #3945a1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #4da3ff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: #4da3ff33;
+  margin-left: 15px;
+}
+
+h2 svg {
+  width: 32px;
+  height: 32px;
+  fill: #4da3ff;
+}
+
+/* ---------- ABOUT ---------- */
+#about p {
+  font-size: 1.1rem;
+  color: #d0d9ff;
+  line-height: 1.8;
+}
+
+/* ---------- SKILLS ---------- */
+.skills .stat {
+  margin-bottom: 20px;
+}
+
+.stat-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.bar {
+  height: 20px;
+  background: #1a2035;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #7b6cff, #b197ff);
+  transition: width 1.5s ease;
+  position: relative;
+}
+
+.fill::after {
+  content: attr(data-width);
+  position: absolute;
+  right: 8px;
+  top: 0;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- PROJECTS ---------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.project {
+  background: #10172e;
+  border: 1px solid #1b2745;
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project:hover {
+  transform: translateY(-10px);
+  background: #16203f;
+}
+
+.project h3 {
+  color: #8cb3ff;
+  margin-bottom: 12px;
+  transition: 0.3s ease;
+}
+
+.project p {
+  color: #cfd6ff;
+  transition: 0.3s ease;
+}
+
+.project::after {
+  content: "View Project";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: #4da3ff;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 10px;
+  opacity: 0;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.project:hover::after {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ---------- FLOATING DISCORD ---------- */
+.discord-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 60px;
+  height: 60px;
+  background: #5865F2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  z-index: 2000;
+  transition: 0.3s ease;
+}
+
+.discord-float:hover {
+  transform: scale(1.2);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: #7b7b7b;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  header h1 { font-size: 2.5rem; }
+  header p { font-size: 1rem; }
+  section { margin: 60px auto; }
+  .projects { gap: 15px; }
+}
+
+/* ---------- BACK TO TOP ---------- */
+#back-to-top {
+  position: fixed;
+  bottom: 90px;
+  right: 22px;
+  background: #4da3ff;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.3s ease;
+  z-index: 2000;
+}
+
+#back-to-top:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Shamar Pryce</h1>
+  <p>Python Developer • Discord Bot Creator • Web & UI Designer</p>
+  <a class="discord-btn" href="https://discord.gg/hjGVfWgh27" target="_blank">Join My Discord</a>
+</header>
+
+<section id="about">
+  <h2>
+    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+    About Me
+  </h2>
+  <p>Hello! I'm <strong>Shamar Pryce</strong>, a passionate developer who loves building <strong>Discord bots</strong>, creating <strong>web apps</strong>, and designing <strong>intuitive UI</strong>. I specialize in <strong>Python</strong> and constantly explore ways to make code efficient and visually appealing. My projects focus on automation, interactivity, and user engagement, making experiences enjoyable and smooth.</p>
+</section>
+
+<section id="skills">
+  <h2>
+    <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+    Skills
+  </h2>
+
+  <div class="skills">
+    <div class="stat">
+      <div class="stat-label"><span>Python</span><span>95%</span></div>
+      <div class="bar"><div class="fill" data-width="95%"></div></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label"><span>Discord Bot Development</span><span>90%</span></div>
+      <div class="bar"><div class="fill" data-width="90%"></div></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label"><span>Web Development</span><span>85%</span></div>
+      <div class="bar"><div class="fill" data-width="85%"></div></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label"><span>UI/UX Design</span><span>80%</span></div>
+      <div class="bar"><div class="fill" data-width="80%"></div></div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label"><span>Databases</span><span>60%</span></div>
+      <div class="bar"><div class="fill" data-width="60%"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>
+    <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 0h14V7H7v2zm0 4h14v-2H7v2zm0 4h14v-2H7v2z"/></svg>
+    Projects
+  </h2>
+
+  <div class="projects">
+    <div class="project">
+      <h3>Discord Moderation Bot</h3>
+      <p>Automated moderation, ticketing, and engagement features for Discord servers using Python and discord.py.</p>
+    </div>
+
+    <div class="project">
+      <h3>Staff Management Dashboard</h3>
+      <p>Interactive web-based system for staff operations, with smooth UI, role management, and database integration.</p>
+    </div>
+
+    <div class="project">
+      <h3>Portfolio Website</h3>
+      <p>Modern, responsive portfolio showcasing skills and projects with animated elements and interactive sections.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING DISCORD BUTTON -->
+<a href="https://discord.gg/hjGVfWgh27"
+   class="discord-float"
+   target="_blank"
+   aria-label="Join Discord">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M20.317 4.369A19.791 19.791 0 0 0 16.558 3c-.184.329-.39.764-.535 1.111a18.27 18.27 0 0 0-5.046 0A12.27 12.27 0 0 0 10.44 3a19.736 19.736 0 0 0-3.76 1.369C3.114 8.162 2.34 11.843 2.73 15.468a19.9 19.9 0 0 0 5.963 3.013c.484-.658.916-1.358 1.285-2.1-.706-.266-1.38-.59-2.016-.964.17-.124.336-.252.495-.383a13.86 13.86 0 0 0 11.086 0c.16.131.326.259.496.383-.637.374-1.31.698-2.017.964.37.742.8 1.442 1.286 2.1a19.9 19.9 0 0 0 5.963-3.013c.47-4.206-.78-7.856-3.274-11.099Z"/>
+  </svg>
+</a>
+
+<div id="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Top</div>
+
+<footer>
+  &copy; 2025 Shamar Pryce. Crafted with ❤️ and Python.
+</footer>
+
+<script>
+// Fade-in sections & animate skill bars
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      entry.target.querySelectorAll(".fill").forEach(bar => {
+        bar.style.width = bar.dataset.width;
+      });
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll("section").forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
